@@ -47,7 +47,6 @@
 
 // задачка елочка
 
-
 // *
 // **
 // ***
@@ -71,8 +70,6 @@
 
 // вложенные циклы и метки
 
-
-
 // first: for (let i = 0; i < 3; i++) {
 //     console.log(`First level: ${i}`);
 //     for (let j = 0; j < 3; j++) {
@@ -83,7 +80,6 @@
 //         }
 //     }
 // }
-
 
 /////////////////////////////////
 
@@ -113,7 +109,6 @@
 
 // console.log(counter);
 
-
 /////////////////////////////////////////////
 
 // const options = {
@@ -138,9 +133,6 @@
 // const {border, bg} = options.colors;
 
 // console.log(border);
-
-
-
 
 /////////////////////////////////////////клонирование объекта
 
@@ -169,7 +161,6 @@
 // console.log(numbers);
 // console.log(newNumbers);
 
-
 /////////////////////////////////////////клонирование объекта
 
 // const add = {
@@ -184,7 +175,6 @@
 // console.log(add);
 // console.log(clone);
 
-
 /////////////////////////////////////////клонирование массива
 
 // const oldArr = ['a', 'b', 'c'];
@@ -196,14 +186,12 @@
 // console.log(newArr);
 // console.log(oldArr);
 
-
-
 ////////////////////////////////оператор SPREAD
 
 // const blog = ['q', 'w', 'w'],
 //       sites = ['f', 'd', 'p'],
 //       internet = [...blog, ...sites, 'n', 'c'];
-    
+
 // console.log(internet);
 
 ///////////
@@ -218,10 +206,7 @@
 
 // log(...num);
 
-
-
-
-///////////////////////создание копий объектов черех оператор spread 
+///////////////////////создание копий объектов черех оператор spread
 
 // const obj = {
 //     one: 1,
@@ -253,73 +238,110 @@
 
 // console.log(Object.assign(numbers, add));
 
+////////////////////////////////////////создание прототипов
 
-
-// let numberOfFilms; 
-
-// function start() {
-//     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-//     while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms) ) {
-//         numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// const soldier = {
+//     health: 400,
+//     armor: 99,
+//     hello: function() {
+//         console.log('Hello')
 //     }
 // }
 
-// start();
+// const john = Object.create(soldier);
 
-// const personalMovieDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
+// john.hello();
 
-// function rememberMyFilms() {
-//     for (let i = 0; i < 2; i++) {
-//         const a = prompt('Один из последних просмотренных фильмов?', '').trim(),
-//               b = prompt('На сколько оцените его?', '');
-    
-//         if (a != null && b != null && a != '' && b != '' && a.length < 50 && b.length < 50 ) {
-            
-//             personalMovieDB.movies[a] = b;
-//         } else {
-//             console.log('error');
-//             i--;
-//         }
-//     }
-// }
+// Object.setPrototypeOf(john, soldier); //унаследование прототипа
 
-// rememberMyFilms();
+const personalMovieDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+  start: function () {
+    personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+
+    while (
+      personalMovieDB.count == "" ||
+      personalMovieDB.count == null ||
+      isNaN(personalMovieDB.count)
+    ) {
+      personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    }
+  },
+  rememberMyFilms: function () {
+    for (let i = 0; i < 2; i++) {
+      const a = prompt("Один из последних просмотренных фильмов?", "").trim(),
+        b = prompt("На сколько оцените его?", "");
+
+      if (
+        a != null &&
+        b != null &&
+        a != "" &&
+        b != "" &&
+        a.length < 50 &&
+        b.length < 50
+      ) {
+        personalMovieDB.movies[a] = b;
+      } else {
+        console.log("error");
+        i--;
+      }
+    }
+  },
+  detectPersonalLevel: function () {
+    if (personalMovieDB.count < 10) {
+      console.log("Слишком мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+      console.log("Вы классный зритель");
+    } else if (personalMovieDB.count >= 30) {
+      console.log("Вы киноман");
+    } else {
+      console.log("произошла ошибка");
+    }
+  },
+  showMyDB: function () {
+    if (!hidden) {
+      console.log(personalMovieDB);
+    }
+  },
+  toggleVisibleMyDB: function () {
+    if (personalMovieDB.privat) {
+      personalMovieDB.privat = false;
+    } else {
+      personalMovieDB.privat = true;
+    }
+  },
+  writeYourGenres: function () {
+    // for (let i = 1; i <= 3; i++) {
+    //   let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+
+    //   if (genre === "" || genre === null) {
+    //     console.log("телега");
+    //     i--;
+    //   } else {
+    //     personalMovieDB.genres[i - 1] = genre;
+    //   }
+    // }
 
 
-// function detectPersonalLevel() {
-//     if (personalMovieDB.count < 10) {
-//         console.log('Слишком мало фильмов');
-//     } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-//         console.log('Вы классный зритель');
-//     } else if(personalMovieDB.count >= 30)  {
-//         console.log('Вы киноман');
-//     } else {
-//         console.log('произошла ошибка');
-//     }
-// }
+   ///////////////////////////////////////////////////////////////////////////////то же самое немного по-другому
 
-// detectPersonalLevel();
+    for (let i = 1; i < 2; i++) {
+      let genre = prompt("Введите ваши любимые жанры через запятую");
 
-// function showMyDB(hidden) {
-//     if (!hidden) {
-//         console.log(personalMovieDB);
-//     }
-// }
+      if (genre === "" || genre === null) {
+        console.log("телега");
+        i--;
+      } else {
+        personalMovieDB.genres = genre.split(", ");
+      }
+    }
 
-// showMyDB(personalMovieDB.privat);
-
-// function writeYourGenres() {
-//     for(let i = 0; i < 3;  i++) {
-//         personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i+1}`);
-//     }
-//     console.log(personalMovieDB);
-// }
-
-// writeYourGenres();
+    personalMovieDB.genres.forEach((item, i) => {
+      console.log(`Ваш любимый жанр ${item} под номером ${i + 1}`);
+    });
+  }
+};

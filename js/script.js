@@ -363,6 +363,32 @@
 
 // ответ 2
 
+///////////////////////метод childNodes для элементов, а не для нод
+
+// for( let node of document.body.childNodes) {
+//   if (node.nodeName == '#text') {
+//     continue;
+//   }else {
+//     console.log(node);
+//   }
+// }
+
+
+////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

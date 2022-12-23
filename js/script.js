@@ -395,65 +395,137 @@
 
 //////////////////////////////////задачка с подсчетом студентов и прогрессом
 
-let students = {
-  js: [
-    {
-      name: "John",
-      progress: 100,
-    },
-    {
-      name: "Ivan",
-      progress: 60,
-    },
-  ],
-  html: {
-    basic: [
-      {
-        name: "Katya",
-        progress: 70,
-      },
-      {
-        name: "Petya",
-        progress: 50,
-      },
-    ],
-    pro: [
-      {
-        name: "Vasya",
-        progress: 75,
-      },
-      {
-        name: "Olya",
-        progress: 40,
-      },
-    ]
-  }
-};
+// let students = {
+//   js: [
+//     {
+//       name: "John",
+//       progress: 100,
+//     },
+//     {
+//       name: "Ivan",
+//       progress: 60,
+//     },
+//   ],
+//   html: {
+//     basic: [
+//       {
+//         name: "Katya",
+//         progress: 70,
+//       },
+//       {
+//         name: "Petya",
+//         progress: 50,
+//       },
+//     ],
+//     pro: [
+//       {
+//         name: "Vasya",
+//         progress: 75,
+//       },
+//       {
+//         name: "Olya",
+//         progress: 40,
+//       },
+//     ]
+//   }
+// };
 
 
-function getTotalProgressByIteration(data) {
-  let total = 0;
-  let students = 0;
+// function getTotalProgressByIteration(data) {
+//   let total = 0;
+//   let students = 0;
 
-  for(let course of Object.values(data)) {
-    if(Array.isArray(course)){
-      students += course.length
-      for(let i = 0; i < course.length; i++) {
-        total += course[i].progress;
-      }
-    }else {
-      for(let subCourse of Object.values(course)) {
-        students += subCourse.length;
-        for(let i = 0; i < subCourse.length; i++) {
-          total += subCourse[i].progress;
-        }
-      }
-    }
-  }
-  return total / students;
-}
+//   for(let course of Object.values(data)) {
+//     if(Array.isArray(course)){
+//       students += course.length
+//       for(let i = 0; i < course.length; i++) {
+//         total += course[i].progress;
+//       }
+//     }else {
+//       for(let subCourse of Object.values(course)) {
+//         students += subCourse.length;
+//         for(let i = 0; i < subCourse.length; i++) {
+//           total += subCourse[i].progress;
+//         }
+//       }
+//     }
+//   }
+//   return total / students;
+// }
 
-console.log(getTotalProgressByIteration(students));
+// console.log(getTotalProgressByIteration(students));
+
+/////////////////////////////// та же задачка, только с помощью рекурсии, то есть универсальнее, и обрабатывает все вложенности обьекта 
+
+// let students = {
+//   js: [
+//     {
+//       name: "John",
+//       progress: 100,
+//     },
+//     {
+//       name: "Ivan",
+//       progress: 60,
+//     },
+//   ],
+//   html: {
+//     basic: [
+//       {
+//         name: "Katya",
+//         progress: 70,
+//       },
+//       {
+//         name: "Petya",
+//         progress: 50,
+//       },
+//     ],
+//     pro: [
+//       {
+//         name: "Vasya",
+//         progress: 75,
+//       },
+//       {
+//         name: "Olya",
+//         progress: 40,
+//       },
+//     ], 
+//   }
+// };
+
+
+// function getTotalProgressByRecurtion(data) {
+//   if(Array.isArray(data)) {
+//     let total = 0;
+
+//     for( let i = 0; i < data.length; i++) {
+//       total += data[i].progress;
+//     }
+
+//     return [total, data.length];
+//   } else {
+//     let total = [0, 0];
+
+//     for (let subData of Object.values(data)) {
+//       const subDataArr = getTotalProgressByRecurtion(subData);
+//       total[0] += subDataArr[0];
+//       total[1] += subDataArr[1];
+//     }
+//     return total;
+//   }
+// }
+
+// const result = getTotalProgressByRecurtion(students);
+
+// console.log(result[0]/ result[1]);
+
+
+
+
+
+
+
+
+
 
 // const personalMovieDB = {
 //   count: 0,

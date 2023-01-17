@@ -593,6 +593,59 @@
 
 
 
+/////////////////////////////////////работа с датой и методы
+// отсчет времени ведется в милисекундах и начинаеься с 1.1.1970
+
+
+
+// let now = new Date();
+
+// console.log(now);
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDate());    возвращает число
+// console.log(now.getDay());    возвращает день недели в цифре
+// console.log(now.getHours());     возвращает часы моего часового пояса
+// console.log(now.getUTCHours());     возвращает часы 0 часового пояса
+
+// console.log(now.getTimezoneOffset());   возвращает разница между 0ым и моим часовыс поясном в минутах
+
+// console.log(now.getTime()); вернет время на сейчас в милисекундах
+
+// аналог get свойство set, когда нужно задать параметры даты
+
+
+////////////////////////////////////////измеряем время работы цикла
+
+// let start = new Date();
+
+// for (let i = 0; i < 1000000; i++) {
+//     let some = i ** 3;
+// }
+
+// let end = new Date();
+
+// alert(`Цикл выполнился за ${end - start}`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const personalMovieDB = {
 //   count: 0,

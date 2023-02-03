@@ -41,11 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const daedline = "2023-02-20";
 
   function getTimeRemaiing(endtime) {
-    const t = Date.parse(endtime) - Date.parse(new Date()),
-      days = Math.floor(t / (1000 * 60 * 60 * 24)),
-      hours = Math.floor((t / (1000 * 60 * 60)) % 24),
-      minutes = Math.floor((t / (1000 / 60)) % 60),
+    let days, hours, minutes, seconds;
+
+    const t = Date.parse(endtime) - Date.parse(new Date());
+
+    if (t <= 0) {
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+    } else {
+      days = Math.floor(t / (1000 * 60 * 60 * 24));
+      hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+      minutes = Math.floor((t / (1000 / 60)) % 60);
       seconds = Math.floor((t / 1000) % 60);
+    }
 
     return {
       total: t,
@@ -57,10 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getZero(num) {
-    if(num >=0 && num < 10) {
-        return `0${num}`;
-    }else {
-        return num;
+    if (num >= 0 && num < 10) {
+      return `0${num}`;
+    } else {
+      return num;
     }
   }
 
@@ -86,4 +96,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setClock(".timer", daedline);
+
+  //////////modal
+
+  const modalShowBtn = document.querySelectorAll("[data-modal]");
+  const modalHideBtn = document.querySelector("div[data-close]");
+  const modalWindow = document.querySelector(".modal");
+
+  modalShowBtn.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      modalWindow.classList.add("show");
+      modalWindow.classList.remove("hide");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal() {
+    modalWindow.classList.add("hide");
+    modalWindow.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  modalHideBtn.addEventListener("click", closeModal);
+
+  
+
+  modalWindow.addEventListener("click", (e) => {
+    if (e.target === modalWindow) {
+      closeModal();
+    }
+  });    ///////////////////////закрытие модального окна кликом мыши вне окна
+
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape' && modalWindow.classList.contains('show')) {
+      closeModal();
+    }
+  });   /////////////////////закрытие модального окна кнопкой esc
 });

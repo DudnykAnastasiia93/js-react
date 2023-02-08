@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 // const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
@@ -629,20 +629,142 @@
 
 
 
+/////////////////////////////////функции-конструкторы ES5
+
+
+// function User(name, id) {
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log(`Hello ${this.name}`);
+//     };
+// }
+
+// User.prototype.exit = function() {
+//     console.log(`Пользователь ${this.name} вышел`);
+// };
+
+// const ivan = new User('Ivan', 28);
+// const nastya = new User('nastya', 28);
+
+
+
+// console.log(ivan);
+// console.log(nastya);
+
+
+// nastya.hello();
+// ivan.exit();
 
 
 
 
+//////////////////////////////////  контекст вызова this
+
+// 1 обычная функция:  this = window, но если включить use strict this = undefined
+
+
+// "use strict";
+
+// function showThis() {
+//     console.log(this);
+// }
+
+// showThis();
 
 
 
 
+// function showThis(a, b) {
+//     console.log(this);
+//     function sum() {
+//         console.log(this);
+//         return a + b;
+//     }
+//     console.log(sum());
+// }
+
+// showThis(4, 5);
+///////////////////////////////////////////////
+
+
+//////  2   контекст у методов объекта - всегда тот объект
+
+// const obj = {
+//     a: 20,
+//     b: 19,
+//     sum: function() {
+//         console.log(this);
+//     }
+// };
+
+// obj.sum();
+
+
+
+////////  3  this в конструкторах и классах  - это новый экземпляр объекта
+
+
+
+// function User(name, id) {
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log(`Hello ${this.name}`);
+//     };
+// }
+
+// let ivan = new User('Ivan', 29);
+
+// console.log(ivan);
 
 
 
 
+////////////  4  передача cdойств обьекта в функции (ручное присваивание контекста) и разница между call()  и   aplly()
+
+// function sayName(surname) {
+//     console.log(this);
+//     console.log(this.name + surname);
+// }
+
+// const user = {
+//     name: 'Ivan'
+// };
+
+// sayName.call(user, 'Smith');
+// sayName.apply(user, ['Smith']);
 
 
+///////////  5  ручная привязка контекста this с помощью метода bind()
+
+
+// function count(num) {
+//     return this*num;
+// }
+
+// const double = count.bind(2);
+
+
+// console.log(double(2));
+// console.log(double(22));
+
+
+/////////   6 у стрелочной функции нет своего контекста. она всегда его берет у родителя
+
+// const double = (a) => {
+//     return a * 2;
+// };
+// console.log(double(5));
+
+// можификация стелочной функции из верхнего варианта в нижний
+
+
+// const double = a => a * 2;
+
+// console.log(double(5));
 
 
 

@@ -430,7 +430,6 @@
 //   }
 // };
 
-
 // function getTotalProgressByIteration(data) {
 //   let total = 0;
 //   let students = 0;
@@ -455,7 +454,7 @@
 
 // console.log(getTotalProgressByIteration(students));
 
-/////////////////////////////// та же задачка, только с помощью рекурсии, то есть универсальнее, и обрабатывает все вложенности обьекта 
+/////////////////////////////// та же задачка, только с помощью рекурсии, то есть универсальнее, и обрабатывает все вложенности обьекта
 
 // let students = {
 //   js: [
@@ -488,10 +487,9 @@
 //         name: "Olya",
 //         progress: 40,
 //       },
-//     ], 
+//     ],
 //   }
 // };
-
 
 // function getTotalProgressByRecurtion(data) {
 //   if(Array.isArray(data)) {
@@ -518,16 +516,13 @@
 
 // console.log(result[0]/ result[1]);
 
-
 ///////////////////////////////////////события на мобильных устройствах, пример
-// то же самое и с 
+// то же самое и с
 // touchend
 // touchmove
 // touchcancel
 // touchenter
 // touchleave
-
-
 
 // window.addEventListener("DOMContentLoaded", () => {
 //     box.addEventListener('touchstart', (e) => {
@@ -536,20 +531,13 @@
 //     });
 // });
 
-
-
-
-////////////////////////////////////////свойства у   е(тот что preventDefault)  на мобильних устройствах 
+////////////////////////////////////////свойства у   е(тот что preventDefault)  на мобильних устройствах
 
 // touches             определяет сколько пальцев сейчас на экране
 // targetToushes       определяет сколько пальцев взаимодействует именно с конкретным элементом
 // changedTouches      определяет конкретный палец(или несколько) на котором сработало событие
 
 // записываются e.touches;
-
-
-
-
 
 ////////////////////////////////////// оператор опцилнальной цепочки
 
@@ -560,7 +548,7 @@
 // если нет переменной а - не прерывает код, а продолжает действие и выводит undefined;
 // работает только на чтение переменной
 
-///////////////////////////////////// оператор нулевого слияния Nullish  
+///////////////////////////////////// оператор нулевого слияния Nullish
 
 // ??
 
@@ -568,35 +556,24 @@
 
 //////////////////////////////////////////создание массива из псевдомассива
 
-
 // const arr = document.getElementsByClassName('box');
 // console.log(Array.from(arr));
 
-
-
-///////////////////////////////////////////////метод matches() ищет элемент по отличающемся классу, среди элемнтов с классом box найдет элемент с классом this 
+///////////////////////////////////////////////метод matches() ищет элемент по отличающемся классу, среди элемнтов с классом box найдет элемент с классом this
 
 // const arr = document.querySelectorAll('.box');
 
 // arr.forEach(box => {
 //     if(box.matches('.this'))  console.log(box);
-    
-// });
 
+// });
 
 //////////////////////////////////////////метод closest() ищет  родителя с заданным классом по всей цепочке
 // const arr = document.querySelectorAll('.box');
 // console.log(arr[0].closest('.wrapper'));
 
-
-
-
-
-
 /////////////////////////////////////работа с датой и методы
 // отсчет времени ведется в милисекундах и начинаеься с 1.1.1970
-
-
 
 // let now = new Date();
 
@@ -614,7 +591,6 @@
 
 // аналог get свойство set, когда нужно задать параметры даты
 
-
 ////////////////////////////////////////измеряем время работы цикла
 
 // let start = new Date();
@@ -627,10 +603,7 @@
 
 // alert(`Цикл выполнился за ${end - start}`);
 
-
-
 /////////////////////////////////функции-конструкторы ES5
-
 
 // function User(name, id) {
 //     this.name = name;
@@ -648,22 +621,15 @@
 // const ivan = new User('Ivan', 28);
 // const nastya = new User('nastya', 28);
 
-
-
 // console.log(ivan);
 // console.log(nastya);
-
 
 // nastya.hello();
 // ivan.exit();
 
-
-
-
 //////////////////////////////////  контекст вызова this
 
 // 1 обычная функция:  this = window, но если включить use strict this = undefined
-
 
 // "use strict";
 
@@ -672,9 +638,6 @@
 // }
 
 // showThis();
-
-
-
 
 // function showThis(a, b) {
 //     console.log(this);
@@ -688,7 +651,6 @@
 // showThis(4, 5);
 ///////////////////////////////////////////////
 
-
 //////  2   контекст у методов объекта - всегда тот объект
 
 // const obj = {
@@ -701,11 +663,7 @@
 
 // obj.sum();
 
-
-
 ////////  3  this в конструкторах и классах  - это новый экземпляр объекта
-
-
 
 // function User(name, id) {
 //     this.name = name;
@@ -719,9 +677,6 @@
 // let ivan = new User('Ivan', 29);
 
 // console.log(ivan);
-
-
-
 
 ////////////  4  передача cdойств обьекта в функции (ручное присваивание контекста) и разница между call()  и   aplly()
 
@@ -737,9 +692,7 @@
 // sayName.call(user, 'Smith');
 // sayName.apply(user, ['Smith']);
 
-
 ///////////  5  ручная привязка контекста this с помощью метода bind()
-
 
 // function count(num) {
 //     return this*num;
@@ -747,10 +700,8 @@
 
 // const double = count.bind(2);
 
-
 // console.log(double(2));
 // console.log(double(22));
-
 
 /////////   6 у стрелочной функции нет своего контекста. она всегда его берет у родителя
 
@@ -761,10 +712,69 @@
 
 // можификация стелочной функции из верхнего варианта в нижний
 
-
 // const double = a => a * 2;
 
 // console.log(double(5));
+
+/////////////////////////////////////////создание классов
+
+// class Rectangle {
+//     constructor(width, height) {
+//         this.width = width;
+//         this.height = height;
+//     }
+
+//     calcArea() {
+//         return this.width * this.height;
+//     }
+// }
+
+// const square = new Rectangle(10, 10);
+// const square1 = new Rectangle(8, 54);
+// const square2 = new Rectangle(6, 7);
+
+// console.log(square.calcArea());
+// console.log(square1.calcArea());
+// console.log(square2.calcArea());
+
+// ///////// создание наследоваемого  класса
+
+// class RectangleWithTextAndColor extends Rectangle {
+//     constructor(width, height, text, color) {
+//         super(width, height);
+//         this.text = text;
+//         this.color = color;
+//     }
+//     showMyProps() {
+//         console.log(`Text: ${this.text}, Color: ${this.color}`);
+//     }
+// }
+
+// const div = new RectangleWithTextAndColor(23, 10, 'Nastya', 'red');
+
+// div.showMyProps();
+
+// console.log(div.calcArea());
+
+///////////////////////////////////оператор rest ( противоположный spread )
+
+const log = function (a, b, c, ...rest) {
+  console.log(a, b, c, rest);
+};
+
+
+log(5, 6, 3, 3, 3, 9);  ////// переменные которые попадают в rest выводятся массивом
+
+
+function calcOrDouble(a, b =2) {  /////////такая запись второго аргумента говорит, что если  2ой аргумент не передан = ему присваивается 2
+    console.log(a * b);
+}
+
+calcOrDouble(4);
+
+
+
+
 
 
 

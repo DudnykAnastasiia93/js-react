@@ -758,19 +758,88 @@
 
 ///////////////////////////////////оператор rest ( противоположный spread )
 
-const log = function (a, b, c, ...rest) {
-  console.log(a, b, c, rest);
-};
+// const log = function (a, b, c, ...rest) {
+//   console.log(a, b, c, rest);
+// };
+
+// log(5, 6, 3, 3, 3, 9);  ////// переменные которые попадают в rest выводятся массивом
+
+// function calcOrDouble(a, b =2) {  /////////такая запись второго аргумента говорит, что если  2ой аргумент не передан = ему присваивается 2
+//     console.log(a * b);
+// }
+
+// calcOrDouble(4);
+
+/////////////////// JSON и создание глубокого клона со всеми вложенностями с его помощью
+
+// const person = {
+//   name: "Nastya",
+//   age: 29,
+//   parents: {
+//     mom: "Ira",
+//     dad: "Alex",
+//   },
+// };
+
+// const clone = JSON.parse(JSON.stringify(person));
+
+// clone.parents.mom = "Tanya";
+
+// console.log(person);
+// console.log(clone);
+
+//////////////////////////////////////  Promise    выполняет куски кода поочередно, если предыдущий кусок кода выполняется успешно(resolve в связке с then()),  если  на каком-то этапе что-то соломалось (reject  в связке с catch),  
+
+// console.log("Запрос данных");
+
+// const req = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     console.log("Подготовка данных...");
+
+//     const product = {
+//       name: "TV",
+//       price: 2000,
+//     };
+
+//     resolve(product);
+//   }, 2000);
+// });
+
+// req.then((product) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       product.status = "order";
+//       // console.log(product);
+//       resolve(product);
+//     }, 2000);
+//   }).then((data) => {
+//     data.modify = true;
+//     return data;
+//   }).then((data) => {
+//     console.log(data);
+//   }).catch(()=>{
+//     console.log('Произошла ошибка');
+//   }).finally(()=>{
+//     console.log('Выводится в независимости от успеха или ошибки');
+//   });
+// });
 
 
-log(5, 6, 3, 3, 3, 9);  ////// переменные которые попадают в rest выводятся массивом
+////////////////////////методы глобального обьекта Promise :  all - выполняет указанные действия после того, как все указанные промисы внутри массива выполнилисьб,    race же выполняет свои действия, когда 1ый элемент массива выполнится быстрее остальных по времени
 
 
-function calcOrDouble(a, b =2) {  /////////такая запись второго аргумента говорит, что если  2ой аргумент не передан = ему присваивается 2
-    console.log(a * b);
+const test = time => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(), time);
+  })
 }
 
-calcOrDouble(4);
+// test(1000).then(() => console.log('1000ms'));
+// test(2000).then(() => console.log('2000ms'));
+
+// Promise.all([test(1000), test(2000)]).then(() => console.log('All'));
+Promise.race([test(1000), test(2000)]).then(() => console.log('Race'));
+
 
 
 
